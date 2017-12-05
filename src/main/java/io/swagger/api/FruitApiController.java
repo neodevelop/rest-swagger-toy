@@ -41,4 +41,13 @@ public class FruitApiController implements FruitApi {
         return builder.body(fruits);
     }
 
+    @Override
+    public ResponseEntity<Fruit> fruitDelete(Integer fruitId) {
+        Fruit fruit = fruits.remove(fruitId - 1);
+        ResponseEntity.BodyBuilder builder = (ResponseEntity.BodyBuilder) ResponseEntity.ok();
+        builder.allow(HttpMethod.GET);
+        builder.contentType(MediaType.APPLICATION_JSON);
+        return builder.body(fruit);
+    }
+
 }

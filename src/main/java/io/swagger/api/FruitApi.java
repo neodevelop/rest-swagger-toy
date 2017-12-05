@@ -55,4 +55,14 @@ public interface FruitApi {
         method = RequestMethod.GET)
     ResponseEntity<List<Fruit>> listFruits();
 
+
+    @ApiOperation(value = "Delete a single fruit", notes = "", response = Fruit.class, tags={ "fruit", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "succesful operation", response = Fruit.class) })
+
+    @RequestMapping(value = "/fruit/{fruitId}",
+            produces = { "application/json" },
+            method = RequestMethod.DELETE)
+    ResponseEntity<Fruit> fruitDelete(@ApiParam(value = "ID of the fruit",required=true ) @PathVariable("fruitId") Integer fruitId);
+
 }
